@@ -34,11 +34,11 @@ export default function Home() {
     }).then(async response => {
       if (response.status === 200) {
         const user = await response.json();
-        message.success('created user ' + user.name);
+        message.success('created customer ' + user.name);
         setUsers([...users, user]);
 
       } else message.error(
-          `Failed to create user:\n ${JSON.stringify(await response.json())}`);
+          `Failed to create customer:\n ${JSON.stringify(await response.json())}`);
     }).catch(res=>{message.error(res)})
   };
 
@@ -55,11 +55,11 @@ export default function Home() {
     }).then(async response => {
       if (response.status === 200) {
         await response.json();
-        message.success('Deleted user ' + user.name);
+        message.success('Deleted customer ' + user.name);
         setUsers(users.filter(u=> u.id !== id ));
 
       } else message.error(
-          `Failed to delete user:\n ${user.name}`);
+          `Failed to delete customer:\n ${user.name}`);
     }).catch(res=>{message.error(res)})
   };
 
@@ -77,12 +77,17 @@ export default function Home() {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Email',
+      title: 'Seat Number',
       dataIndex: 'email',
       key: 'email',
     },
     {
-      title: 'Address',
+      title: 'Order',
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: 'Bill',
       dataIndex: 'address',
       key: 'address',
     },
@@ -141,7 +146,7 @@ export default function Home() {
 
   return  <>
     <Button type="primary" onClick={showModal}>
-      Add User
+      Add Customer
     </Button>
     <Modal title="Basic Modal" onCancel={handleCancel}
            open={isModalOpen} footer={null}  width={800}>
