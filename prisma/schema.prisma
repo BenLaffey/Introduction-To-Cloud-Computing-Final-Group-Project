@@ -14,9 +14,10 @@ datasource db {
 
 model User {
   id      Int     @id @default(autoincrement())
-  email   String  @unique
+  seat    Int     @unique
   name    String?
-  address String?
+  order   String?
+  bill    String?
   posts   Post[]
 }
 
@@ -34,5 +35,5 @@ model Order {
   name      String
   description String?
   ingredients String?
-  price     Float
+  price     String
 }

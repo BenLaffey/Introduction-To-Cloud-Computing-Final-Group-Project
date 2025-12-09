@@ -1,6 +1,15 @@
 export type User = {
     id : number;
-    email: string;
+    seat: number;
     name: string;
-    address: string;
+    order: string;
+    bill: string;
+}
+
+export type Order = {
+    id : number;
+    name: string;
+    description: string;
+    ingredients: string;
+    price: string;
 }
